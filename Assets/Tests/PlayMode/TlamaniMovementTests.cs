@@ -99,6 +99,47 @@ public class TlamaniMovementTests
         Assert.That(body.gravityScale, Is.EqualTo(3f));
     }
     [UnityTest]
+    public IEnumerator DashSinEntradaTerminaSinDeslizamiento()
+    {
+        yield return FinishDashWithInput(0f);
+        Assert.That(body.velocity.x, Is.EqualTo(0f).Within(0.01f));
+        float end = body.position.x;
+        yield return Steps(8);
+        Assert.That(body.position.x, Is.EqualTo(end).Within(0.01f));
+    }
+    [UnityTest]
+    public IEnumerator DashConEntradaRecuperaVelocidadNormal()
+    {
+        yield return FinishDashWithInput(1f);
+        Assert.That(body.velocity.x, Is.EqualTo(6f).Within(0.01f));
+        Assert.That(body.gravityScale, Is.EqualTo(3f));
+    }
+    [UnityTest]
+    public IEnumerator DashPermiteCambiarDireccionAlTerminar()
+    {
+        yield return FinishDashWithInput(-1f);
+        Assert.That(body.velocity.x, Is.EqualTo(-6f).Within(0.01f));
+        Assert.That(motor.Facing, Is.EqualTo(-1));
+    }
+    [UnityTest]
+    public IEnumerator DashAereoRecuperaGravedadAlTerminar()
+    {
+        motor.RespawnAt(origin + new Vector2(0, 5));
+        yield return FinishDashWithInput(0f);
+        Assert.That(body.gravityScale, Is.EqualTo(3f));
+        Assert.That(body.velocity.y, Is.LessThan(0f));
+        Assert.That(body.velocity.x, Is.EqualTo(0f).Within(0.01f));
+    }
+    private IEnumerator FinishDashWithInput(float input)
+    {
+        motor.SetInput(1, false, true);
+        yield return Steps(1);
+        Assert.That(motor.IsDashing, Is.True);
+        motor.SetInput(input, false, false);
+        for (int i = 0; i < 20 && motor.IsDashing; i++) yield return Steps(1);
+        Assert.That(motor.IsDashing, Is.False);
+    }
+    [UnityTest]
     public IEnumerator DashIzquierdoSeDetieneAnteParedDelgada()
     {
         var wall = Solid("Pared delgada izquierda", new Vector2(-1.5f,2), new Vector2(0.05f,6));

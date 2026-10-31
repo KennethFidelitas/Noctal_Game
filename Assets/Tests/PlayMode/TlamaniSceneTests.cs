@@ -9,6 +9,37 @@ using UnityEngine.Tilemaps;
 
 public class TlamaniSceneTests
 {
+#if UNITY_EDITOR
+    [Test]
+    public void PiesDeAnimacionesQuedanSobreLaBaseDelCollider()
+    {
+        var prefab = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tlamani.prefab");
+        var capsule = prefab.GetComponent<CapsuleCollider2D>();
+        float bottom = capsule.offset.y - capsule.size.y / 2f;
+        foreach (string sheet in new[] { "Tlamani-Idle-Sheet", "Tlamani-walk", "Tlamani-run", "Tlamani-jump-Sheet" })
+        {
+            string path = "Assets/Sprites/" + sheet + ".png";
+            var texture = new Texture2D(2, 2);
+            try
+            {
+                texture.LoadImage(File.ReadAllBytes(path));
+                foreach (var asset in UnityEditor.AssetDatabase.LoadAllAssetsAtPath(path))
+                {
+                    if (!(asset is Sprite sprite)) continue;
+                    int lowest = (int)sprite.rect.height;
+                    for (int y = 0; y < sprite.rect.height && lowest == sprite.rect.height; y++)
+                        for (int x = 0; x < sprite.rect.width; x++)
+                            if (texture.GetPixel((int)sprite.rect.x + x, (int)sprite.rect.y + y).a > 0.5f)
+                            { lowest = y; break; }
+                    float feet = (lowest - sprite.pivot.y) / sprite.pixelsPerUnit;
+                    // Permite levantar el pie hasta 4 px en la animacion, nunca enterrarlo.
+                    Assert.That(feet, Is.InRange(bottom - 0.005f, bottom + 4.1f / sprite.pixelsPerUnit), sprite.name);
+                }
+            }
+            finally { Object.DestroyImmediate(texture); }
+        }
+    }
+#endif
     private IEnumerator Steps(int count) { for(int i=0;i<count;i++) yield return new WaitForFixedUpdate(); }
 
     [UnityTest]
@@ -36,7 +67,13 @@ public class TlamaniSceneTests
         motor.SetInput(1,false,true); yield return Steps(3); yield return null;
         Assert.That(motor.IsDashing, Is.True);
         Capture("04-dash");
-        motor.SetInput(0,false,false); yield return Steps(55); yield return null;
+        motor.SetInput(0,false,false);
+        for (int i = 0; i < 20 && motor.IsDashing; i++) yield return Steps(1);
+        yield return null;
+        Assert.That(motor.IsDashing, Is.False);
+        Assert.That(motor.Velocity.x, Is.EqualTo(0f).Within(0.01f));
+        Capture("06-fin-dash");
+        yield return Steps(50); yield return null;
         Assert.That(motor.IsGrounded, Is.True);
         Capture("05-aterrizaje");
         // Zona_Muerte real: el trigger debe devolverlo al punto asignado.

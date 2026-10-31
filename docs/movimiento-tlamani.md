@@ -31,6 +31,8 @@ Al presionar Shift, el personaje conserva una dirección horizontal durante 0,16
 
 Antes de cada paso de dash, `Rigidbody2D.Cast` barre la forma del personaje hacia el movimiento previsto. Si encuentra una pared, limita la distancia hasta el obstáculo menos un margen de 0,015 unidades y termina el dash. La detección continua del Rigidbody2D proporciona protección adicional frente a atravesar superficies delgadas.
 
+Al finalizar el último paso físico del dash, el estado visual, la gravedad y la velocidad cambian juntos. Sin entrada horizontal, Tlamani se detiene; si se mantiene una dirección, continúa a 6 unidades/s hacia esa dirección. No queda impulso sobrante ni un cuadro extra de velocidad casi cero por redondeo del temporizador.
+
 ## Parámetros configurados
 
 | Parámetro | Valor |
@@ -59,17 +61,25 @@ La zona de muerte es un trigger: detecta a Tlamani y llama al reinicio del motor
 
 La cámara sigue a Tlamani suavemente. Las secuencias de reposo, caminata, salto y carrera usan los sprites originales; el dash utiliza la secuencia de carrera y un tinte cian. La interfaz muestra controles y disponibilidad del dash.
 
+Los pivotes de cada secuencia se ajustan a la posición del dibujo dentro de la celda de 64 × 64 píxeles. Los pies se alinean con la base del collider, conservando la oscilación natural de cada animación. Caminar y usar dash ya no desplazan el dibujo hacia abajo ni lateralmente al cambiar de secuencia. El menú `Noctal > Alinear sprites de Tlamani` permite repetir este ajuste sin reconfigurar las escenas.
+
 ## Verificación
 
 Las pruebas PlayMode ejecutan la simulación real de Unity con superficies controladas. Comprueban caminar en ambos sentidos y frenar, salto y aterrizaje, rechazo de doble salto, salto corto, distancia y recarga del dash, paredes delgadas a ambos lados, techo, plataforma delgada, carga aérea, reinicio durante dash, tolerancia del borde y salto anticipado.
 
-**Resultado: 15 de 15 pruebas aprobadas, 0 fallos**, ejecutadas el 31 de octubre de 2026 en Unity 2022.3.62f3. El informe original de Unity está en [test-results.xml](test-results.xml). Las dos pruebas de integración cargan Entrada_Pasillo e Intro; en el pasillo se verifican caminata, salto, dash, aterrizaje y el trigger real de la zona de muerte.
+**Resultado: 20 de 20 pruebas aprobadas, 0 fallos**, ejecutadas el 31 de octubre de 2026 en Unity 2022.3.62f3. El informe original de Unity está en [test-results.xml](test-results.xml). Las dos pruebas de integración cargan Entrada_Pasillo e Intro; en el pasillo se verifican caminata, salto, dash, aterrizaje y el trigger real de la zona de muerte.
+
+Cinco pruebas adicionales verifican los pies en los 39 cuadros originales y la salida del dash sin entrada, caminando, cambiando de dirección y en el aire. Antes de la corrección, cuatro de esas pruebas fallaban; después del ajuste pasan las 20 pruebas.
 
 Las siguientes capturas se renderizaron con la cámara de Unity durante las pruebas PlayMode. Muestran el resultado real de la escena; no incluyen la interfaz del editor ni el HUD superpuesto.
 
 ![Tlamani al inicio del pasillo](capturas/01-inicio.png)
 
 *Inicio: Tlamani apoyado sobre el suelo del nivel.*
+
+![Tlamani caminando sin hundirse](capturas/02-caminar.png)
+
+*Caminata: los pies permanecen por encima de la superficie del suelo.*
 
 ![Tlamani saltando](capturas/03-salto.png)
 
@@ -78,6 +88,10 @@ Las siguientes capturas se renderizaron con la cámara de Unity durante las prue
 ![Tlamani ejecutando dash](capturas/04-dash.png)
 
 *Dash: desplazamiento horizontal y tinte cian durante la carga aérea.*
+
+![Tlamani al terminar el dash](capturas/06-fin-dash.png)
+
+*Fin del dash sin entrada horizontal: velocidad horizontal cero y gravedad restaurada.*
 
 ![Tlamani después de aterrizar](capturas/05-aterrizaje.png)
 

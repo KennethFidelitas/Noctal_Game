@@ -17,6 +17,7 @@ public static class ConfigureTlamani
     public static void Run()
     {
         Slice("Tlamani-walk"); Slice("Tlamani-run"); Slice("Tlamani-jump-Sheet");
+        AlignSpritePivots();
         Directory.CreateDirectory("Assets/Physics");
         Directory.CreateDirectory("Assets/Prefabs");
         var material = AssetDatabase.LoadAssetAtPath<PhysicsMaterial2D>("Assets/Physics/Tlamani.physicsMaterial2D");
@@ -52,7 +53,7 @@ public static class ConfigureTlamani
         var existing = provider.GetSpriteRects();
         var rects = Enumerable.Range(0, count).Select(i => new SpriteRect {
             name = name + "_" + i, rect = new Rect(i * 64, 0, 64, 64), alignment = SpriteAlignment.Custom,
-            pivot = new Vector2(0.6563609f, 0.4776628f),
+            pivot = SpritePivot(name),
             spriteID = existing.FirstOrDefault(r => r.name == name + "_" + i)?.spriteID ?? GUID.Generate()
         }).ToArray();
         provider.SetSpriteRects(rects);
@@ -60,6 +61,36 @@ public static class ConfigureTlamani
             .SetNameFileIdPairs(rects.Select(r => new SpriteNameFileIdPair(r.name, r.spriteID)));
         provider.Apply();
         importer.SaveAndReimport();
+    }
+    // Los dibujos no ocupan el mismo lugar dentro de sus celdas de 64 px.
+    // Alineamos la base de los pies con el collider (-0.62 unidades a 24 px/u).
+    // Un pivote fijo por secuencia conserva el movimiento natural de cada cuadro.
+    private static Vector2 SpritePivot(string name)
+    {
+        bool running = name == "Tlamani-walk" || name == "Tlamani-run";
+        float footBaseline = running ? 6f : name == "Tlamani-jump-Sheet" ? 0f : 16f;
+        return new Vector2(running ? 32f : 42f, footBaseline + 0.62f * 24f) / 64f;
+    }
+    [MenuItem("Noctal/Alinear sprites de Tlamani")]
+    public static void AlignSpritePivots()
+    {
+        foreach (string name in new[] { "Tlamani-Idle-Sheet", "Tlamani-walk", "Tlamani-run", "Tlamani-jump-Sheet" })
+        {
+            var importer = (TextureImporter)AssetImporter.GetAtPath("Assets/Sprites/" + name + ".png");
+            var factories = new SpriteDataProviderFactories(); factories.Init();
+            var provider = factories.GetSpriteEditorDataProviderFromObject(importer);
+            provider.InitSpriteEditorDataProvider();
+            var rects = provider.GetSpriteRects();
+            foreach (var rect in rects)
+            {
+                rect.alignment = SpriteAlignment.Custom;
+                rect.pivot = SpritePivot(name);
+            }
+            provider.SetSpriteRects(rects);
+            provider.Apply();
+            importer.SaveAndReimport();
+        }
+        Debug.Log("TLAMANI_SPRITES_ALIGNED: pivotes corregidos sin modificar las escenas.");
     }
     private static Sprite[] Sprites(string name) => AssetDatabase.LoadAllAssetsAtPath("Assets/Sprites/" + name + ".png")
         .OfType<Sprite>().OrderBy(s => int.Parse(s.name.Substring(s.name.LastIndexOf('_') + 1))).ToArray();

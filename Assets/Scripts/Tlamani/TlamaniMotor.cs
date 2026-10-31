@@ -30,10 +30,10 @@ namespace Noctal
         private Vector2 initialPosition;
         private float horizontal, coyoteRemaining, jumpRemaining, dashRemaining, cooldownRemaining;
         private int dashDirection = 1;
-        private bool dashRequested, dashSpentInAir, jumpReleased;
+        private bool dashRequested, dashSpentInAir, jumpReleased, dashActive;
         private const float Skin = 0.015f;
         public bool IsGrounded { get; private set; }
-        public bool IsDashing => dashRemaining > 0f;
+        public bool IsDashing => dashActive;
         public int Facing { get; private set; } = 1;
         public Vector2 Velocity => body != null ? body.velocity : Vector2.zero;
         public float DashCooldownRemaining => cooldownRemaining;
@@ -68,6 +68,15 @@ namespace Noctal
         {
             if (body.position.y < killY) { Respawn(); return; }
             float dt = Time.fixedDeltaTime;
+            // El ultimo paso de dash ya fue simulado. Cambiar estado y velocidad juntos
+            // evita mostrar caminata mientras todavia se conserva el impulso del dash.
+            if (dashActive && dashRemaining <= 0.000001f)
+            {
+                dashActive = false;
+                dashRemaining = 0f;
+                body.gravityScale = gravityScale;
+                body.velocity = new Vector2(horizontal * speed, body.velocity.y);
+            }
             cooldownRemaining = Mathf.Max(0f, cooldownRemaining - dt);
             IsGrounded = CheckGround();
             if (IsGrounded && !IsDashing) { coyoteRemaining = coyoteTime; dashSpentInAir = false; }
@@ -75,6 +84,7 @@ namespace Noctal
             if (!IsDashing && Mathf.Abs(horizontal) > 0.01f) Facing = horizontal > 0f ? 1 : -1;
             if (dashRequested && CanDash)
             {
+                dashActive = true;
                 dashRemaining = dashDuration;
                 cooldownRemaining = dashCooldown;
                 dashSpentInAir = true;
@@ -129,6 +139,7 @@ namespace Noctal
         {
             ClearInput();
             dashRemaining = cooldownRemaining = coyoteRemaining = 0f;
+            dashActive = false;
             dashSpentInAir = IsGrounded = false;
             body.gravityScale = gravityScale;
             body.velocity = Vector2.zero;
@@ -140,6 +151,7 @@ namespace Noctal
         {
             ClearInput();
             dashRemaining = cooldownRemaining = coyoteRemaining = 0f;
+            dashActive = false;
             dashSpentInAir = IsGrounded = false;
             if (body == null) return;
             body.gravityScale = gravityScale;
