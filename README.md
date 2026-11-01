@@ -22,6 +22,8 @@ El recorrido conecta Entrada del Templo, Galería de la Luz, Sala de Enemigos, S
 
 La vida y la energía son limitadas. Los cristales y los golpes efectivos recuperan energía; las ofrendas recuperan vida. La luz abre defensas, ralentiza el movimiento y prolonga la preparación y recuperación de los enemigos. El puma camina más rápido, salta más alto y golpea con garras.
 
+Para canalizar luz, Tlamani prepara la espada y la sostiene horizontalmente. El haz sale de la punta con un núcleo luminoso, halo, chispas y destello de contacto. Las piernas conservan la caminata y adoptan una postura aérea al saltar. La preparación dura 0,24 segundos y no consume energía; al soltar el control, el rayo cesa y el arma baja.
+
 ## Alcance y recursos
 
 Se reutilizan los sprites de Tlamani y los tiles del proyecto. El puma, los cuatro tipos de enemigo y Llanthu tienen **representaciones gráficas provisionales**, hechas con mallas de colores, que el equipo puede sustituir por su arte final. Las cifras de daño, vida y energía son valores de prototipo, ya que el GDD no los especifica. Las otras secciones del GDD, como cinemáticas, música y menús completos, quedan fuera de este entregable de mecánicas.
@@ -32,6 +34,7 @@ Se reutilizan los sprites de Tlamani y los tiles del proyecto. El puma, los cuat
 
 - `Assets/Scripts/Tlamani/TlamaniMotor.cs`: movimiento, salto y físicas.
 - `TlamaniAbilities.cs`: ataque, transformación y luz; `TlamaniVitals.cs`: salud.
+- `TlamaniLightFx.cs` y `Assets/Mechanics/SolarLight.shader`: brillo, filamentos, chispas y contacto del rayo.
 - `NoctalEnemy.cs` y `NoctalProjectile.cs`: patrones y ataques de enemigos.
 - `NoctalLightTarget.cs` y `NoctalPickup.cs`: mecanismos y recursos.
 - `NoctalLevel.cs` y `NoctalHud.cs`: avance, reintento, pausa, victoria e interfaz.
@@ -43,6 +46,6 @@ Se reutilizan los sprites de Tlamani y los tiles del proyecto. El puma, los cuat
 
 ## Verificación
 
-En Unity: **Window > General > Test Runner > PlayMode > Run All**. Los tests usan Physics2D real y cubren las habilidades, los patrones enemigos, las interacciones del recorrido y las regresiones del movimiento. Los casos de integración suspenden la IA para aislar las interacciones; otros casos verifican los patrones con IA activa. Las capturas de `docs/capturas/07` a `12` proceden de la cámara de Unity durante PlayMode.
+En Unity: **Window > General > Test Runner > PlayMode > Run All**. Los tests usan Physics2D real y cubren las habilidades, los patrones enemigos, las interacciones del recorrido y las regresiones del movimiento. También comprueban la preparación de la espada, la salida de luz, las paredes cercanas y la limpieza de efectos al interrumpir la habilidad. Los casos de integración suspenden la IA para aislar las interacciones; otros casos verifican los patrones con IA activa. Las capturas de `docs/capturas/07` a `17` proceden de la cámara de Unity durante PlayMode.
 
 La escena está guardada y lista para jugar. **Noctal > Abrir mecanicas del GDD** la abre. La herramienta **Noctal > Construir recorrido de mecanicas GDD** regenera la escena y los assets de demostración; usarla solo si se desea reemplazar esa configuración generada.

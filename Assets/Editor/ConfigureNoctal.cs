@@ -65,6 +65,7 @@ public static class ConfigureNoctal
         puma.SetActive(false);
         Reference(abilities,"pumaVisual",puma);
         Reference(abilities,"beam",Beam("Rayo de la orden Inti",actor.transform,new Color(1,.90f,.42f),.10f));
+        Reference(abilities,"lightEffectMaterial",LightMaterial());
         var attack = AssetDatabase.LoadAllAssetsAtPath("Assets/Sprites/Tlamani-attack.png").OfType<Sprite>()
             .OrderBy(s=>int.Parse(s.name.Substring(s.name.LastIndexOf('_')+1))).ToArray();
         var visual = new SerializedObject(actor.GetComponent<TlamaniVisual>()); var frames = visual.FindProperty("attack"); frames.arraySize = attack.Length;
@@ -105,6 +106,35 @@ public static class ConfigureNoctal
         EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(ScenePath,true), new EditorBuildSettingsScene("Assets/Scenes/Entrada_Pasillo.unity",true), new EditorBuildSettingsScene("Assets/Scenes/Intro.unity",true) };
         EditorSceneManager.SaveScene(scene,ScenePath); AssetDatabase.SaveAssets();
         Debug.Log("NOCTAL_GDD_CONFIGURED: siete mecanicas, cinco salas conectadas, cuatro enemigos y Llanthu.");
+    }
+    private static Material LightMaterial()
+    {
+        const string path = Folder + "/SolarLight.mat";
+        var material = AssetDatabase.LoadAssetAtPath<Material>(path);
+        if (material == null)
+        {
+            material = new Material(Shader.Find("Noctal/Solar Light"));
+            AssetDatabase.CreateAsset(material, path);
+        }
+        return material;
+    }
+    [MenuItem("Noctal/Actualizar luz de la espada")]
+    public static void UpgradeLight()
+    {
+        var material = LightMaterial();
+        var scene = EditorSceneManager.OpenScene(ScenePath);
+        foreach (var abilities in Object.FindObjectsOfType<TlamaniAbilities>()) Reference(abilities,"lightEffectMaterial",material);
+        EditorSceneManager.SaveScene(scene);
+        const string prefabPath = "Assets/Prefabs/Tlamani_Mecanicas.prefab";
+        var prefab = PrefabUtility.LoadPrefabContents(prefabPath);
+        try
+        {
+            Reference(prefab.GetComponent<TlamaniAbilities>(),"lightEffectMaterial",material);
+            PrefabUtility.SaveAsPrefabAsset(prefab,prefabPath);
+        }
+        finally { PrefabUtility.UnloadPrefabContents(prefab); }
+        AssetDatabase.SaveAssets();
+        Debug.Log("NOCTAL_SWORD_LIGHT_UPDATED");
     }
     private static void ConfigureLayers()
     {

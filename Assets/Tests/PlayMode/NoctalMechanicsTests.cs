@@ -115,7 +115,7 @@ public class NoctalMechanicsTests
     public IEnumerator LuzDisipaSombraYActivaMecanismo()
     {
         var shadow=Make("Sombra",new Vector2(2,.7f)); shadow.AddComponent<BoxCollider2D>(); var target=shadow.AddComponent<NoctalLightTarget>();
-        abilities.SetLightHeld(true); yield return Steps(35); Assert.That(target.Activated,Is.True); Assert.That(shadow.activeSelf,Is.False);
+        abilities.SetLightHeld(true); yield return Steps(45); Assert.That(target.Activated,Is.True); Assert.That(shadow.activeSelf,Is.False);
         var seal=Make("Sello",new Vector2(3,.7f),NoctalLayers.Interactable); seal.AddComponent<BoxCollider2D>().isTrigger=true;
         var receiver=seal.AddComponent<NoctalLightTarget>(); receiver.kind=NoctalLightTarget.TargetKind.Mechanism;
         receiver.gate=Make("Puerta",new Vector2(4,1)); yield return Steps(35);

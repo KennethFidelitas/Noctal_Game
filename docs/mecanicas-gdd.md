@@ -54,6 +54,10 @@ El puma aumenta la velocidad un 45 % y la velocidad inicial del salto un 15 %, t
 
 El artefacto emite un rayo horizontal de 5,5 unidades de alcance. Su reserva máxima es de 100 puntos y consume 18 puntos de energía por segundo. Se detiene al agotarse la reserva. Las paredes y los objetivos alcanzados limitan el recorrido del rayo.
 
+Al mantener K o el clic derecho, Tlamani prepara la espada durante 0,24 segundos y la sostiene en horizontal. El rayo nace en su punta. Al soltar el control, baja el arma en 0,14 segundos. Durante la preparación no se consume energía ni se dañan enemigos. El torso utiliza una secuencia de los sprites originales; las piernas conservan la caminata y adoptan una postura aérea al saltar.
+
+La luz se presenta con un núcleo blanco cálido, un halo dorado suave, filamentos en movimiento, chispas y un destello en el contacto. Los efectos siguen la posición interpolada del personaje y se limpian al atacar, morir, pausar o reintentar. En forma de puma, la luz sale del frente de su cabeza. Una comprobación desde el cuerpo evita iluminar detrás de una pared situada entre el personaje y la punta del arma.
+
 La luz debilita a las criaturas durante 3 segundos: reduce su movimiento, elimina temporalmente sus defensas y prolonga la preparación y recuperación de sus ataques. También disipa la barrera de sombra y activa el sello solar que abre la puerta del santuario. Estos objetos requieren una exposición continua de 0,55 segundos.
 
 La energía se recupera explorando y combatiendo. Los cristales del recorrido aportan energía, un golpe efectivo recupera 4 puntos y derrotar a un enemigo recupera 20. Las fuentes de la arena vuelven a estar disponibles cada 8 segundos, de modo que quedarse sin energía no impide terminar el combate contra Llanthu. No existe regeneración automática por permanecer quieto lejos de los recursos.

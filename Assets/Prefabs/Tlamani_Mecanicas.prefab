@@ -399,4 +399,6 @@ MonoBehaviour:
   lightCost: 18
   lightRange: 5.5
   beam: {fileID: 986926443039138530}
+  lightEffectMaterial: {fileID: 2100000, guid: d807646400cac8a4990e707fafce8a2f, type: 2}
+  lightPreparation: 0.24
   pumaVisual: {fileID: 3280116251814278390}

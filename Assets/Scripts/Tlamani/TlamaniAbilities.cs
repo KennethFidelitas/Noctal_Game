@@ -12,6 +12,8 @@ namespace Noctal
         [Header("Artefacto de luz")]
         [SerializeField] private float maximumEnergy = 100, lightCost = 18, lightRange = 5.5f;
         [SerializeField] private LineRenderer beam;
+        [SerializeField] private Material lightEffectMaterial;
+        [SerializeField, Min(.02f)] private float lightPreparation = .24f;
         [Header("Anima")]
         [SerializeField] private GameObject pumaVisual;
         private TlamaniMotor motor;
@@ -22,11 +24,17 @@ namespace Noctal
         private readonly HashSet<NoctalEnemy> struck = new HashSet<NoctalEnemy>();
         private float attackRemaining, cooldown;
         private bool lightHeld;
+        private TlamaniLightFx lightFx;
         public float Energy { get; private set; }
         public float MaximumEnergy => maximumEnergy;
         public bool IsAttacking => attackRemaining > 0;
         public float AttackProgress => 1 - attackRemaining / attackDuration;
         public bool IsLighting { get; private set; }
+        public float LightPoseProgress { get; private set; }
+        public float LightPreparation => lightPreparation;
+        public bool BeamHit { get; private set; }
+        public Vector2 BeamOrigin { get; private set; }
+        public Vector2 LightTipOffset => IsPuma ? new Vector2(.80f, -.15f) : new Vector2(1.23f, .13f);
         public bool PumaUnlocked { get; private set; }
         public bool IsPuma { get; private set; }
         public Vector2 BeamEnd { get; private set; }
@@ -38,6 +46,9 @@ namespace Noctal
             capsule = GetComponent<CapsuleCollider2D>(); humanSize = capsule.size; humanOffset = capsule.offset;
             Energy = maximumEnergy; vitals.Died += CancelActions;
             if (beam != null) beam.enabled = false;
+            lightFx = GetComponent<TlamaniLightFx>();
+            if (lightFx == null) lightFx = gameObject.AddComponent<TlamaniLightFx>();
+            lightFx.Initialize(this, lightEffectMaterial);
             if (pumaVisual != null) pumaVisual.SetActive(false);
         }
         private void OnDestroy() { if (vitals != null) vitals.Died -= CancelActions; }
@@ -45,7 +56,7 @@ namespace Noctal
         public bool TryAttack()
         {
             if (vitals.IsDead || cooldown > 0 || Time.timeScale == 0 || motor.IsDashing) return false;
-            lightHeld = false; IsLighting = false;
+            lightHeld = false; IsLighting = false; LightPoseProgress = 0;
             attackRemaining = attackDuration; cooldown = attackCooldown; struck.Clear();
             return true;
         }
@@ -67,6 +78,8 @@ namespace Noctal
         }
         private void SetForm(bool puma)
         {
+            // La nueva forma prepara su propio punto de emisión.
+            IsLighting = false; LightPoseProgress = 0;
             IsPuma = puma;
             capsule.size = puma ? new Vector2(0.95f, 0.65f) : humanSize;
             capsule.offset = puma ? new Vector2(-0.10f, -0.295f) : humanOffset;
@@ -84,9 +97,13 @@ namespace Noctal
                 attackRemaining = Mathf.Max(0, attackRemaining - dt);
                 if (AttackProgress >= 0.22f && AttackProgress <= 0.72f) Strike();
             }
-            IsLighting = lightHeld && !IsAttacking && Energy > 0;
+            bool preparing = lightHeld && !IsAttacking && Energy > 0;
+            LightPoseProgress = Mathf.MoveTowards(LightPoseProgress, preparing ? 1 : 0,
+                dt / (preparing ? lightPreparation : .14f));
+            IsLighting = preparing && LightPoseProgress >= 1;
             if (IsLighting) Illuminate(dt);
-            if (beam != null) beam.enabled = IsLighting;
+            // Se conserva la referencia antigua para migrar escenas sin rehacerlas.
+            if (beam != null) beam.enabled = false;
         }
         private void LateUpdate()
         {
@@ -113,10 +130,14 @@ namespace Noctal
         private void Illuminate(float dt)
         {
             Energy = Mathf.Max(0, Energy - lightCost * dt);
-            Vector2 origin = (Vector2)transform.position + new Vector2(motor.Facing * 0.20f, IsPuma ? -0.15f : 0.10f);
+            Vector2 offset = LightTipOffset;
+            Vector2 origin = capsule.attachedRigidbody.position + new Vector2(0, offset.y);
             Vector2 direction = Vector2.right * motor.Facing;
-            BeamEnd = origin + direction * lightRange;
-            var hits = Physics2D.RaycastAll(origin, direction, lightRange, NoctalLayers.LightMask);
+            BeamOrigin = origin + direction * offset.x;
+            BeamEnd = BeamOrigin + direction * lightRange; BeamHit = false;
+            // Consultar desde el cuerpo evita que la punta atraviese una pared
+            // cercana y emita luz al otro lado. El dibujo empieza en la punta.
+            var hits = Physics2D.RaycastAll(origin, direction, offset.x + lightRange, NoctalLayers.LightMask);
             foreach (var hit in hits)
             {
                 if (hit.collider.transform.IsChildOf(transform)) continue;
@@ -124,17 +145,17 @@ namespace Noctal
                 var receiver = hit.collider.GetComponent<NoctalLightTarget>();
                 if (enemy != null && enemy.IsDead) continue;
                 if (enemy == null && receiver == null && hit.collider.isTrigger) continue;
-                BeamEnd = hit.point;
+                BeamEnd = hit.point; BeamHit = true;
                 if (enemy != null) enemy.ExposeToLight(3f);
                 if (receiver != null) receiver.Illuminate(dt);
                 break;
             }
-            if (beam != null) { beam.SetPosition(0, origin); beam.SetPosition(1, BeamEnd); }
         }
         public void CancelActions()
         {
-            lightHeld = false; IsLighting = false; attackRemaining = cooldown = 0;
+            lightHeld = false; IsLighting = false; LightPoseProgress = 0; BeamHit = false; attackRemaining = cooldown = 0;
             struck.Clear(); if (beam != null) beam.enabled = false;
+            if (lightFx != null) lightFx.Clear();
         }
         public void ResetForRetry()
         {

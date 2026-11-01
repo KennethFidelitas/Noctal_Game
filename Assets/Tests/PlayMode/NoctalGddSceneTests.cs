@@ -47,8 +47,8 @@ public class NoctalGddSceneTests
         var shadow=GameObject.Find("Sombra disipable").GetComponent<NoctalLightTarget>();
         var mechanism=GameObject.Find("Mecanismo solar").GetComponent<NoctalLightTarget>();
         abilities.SetLightHeld(true); motor.SetInput(1,false,false);
-        yield return Steps(35); yield return null; Capture("10-puma-luz");
-        yield return Steps(65); motor.SetInput(0,false,false); abilities.SetLightHeld(false);
+        yield return Steps(55); yield return null; Capture("10-puma-luz");
+        yield return Steps(70); motor.SetInput(0,false,false); abilities.SetLightHeld(false);
         Assert.That(shadow.Activated,Is.True); Assert.That(mechanism.Activated,Is.True);
         Assert.That(mechanism.gate.activeSelf,Is.False); Assert.That(motor.transform.position.x,Is.GreaterThan(81));
         level.TogglePause(); Vector3 paused=motor.transform.position; float energy=abilities.Energy;
@@ -67,7 +67,7 @@ public class NoctalGddSceneTests
         abilities.TryAttack(); yield return Steps(24); Assert.That(boss.Health,Is.EqualTo(18));
         for(int i=0;i<18;i++)
         {
-            abilities.SetLightHeld(true); yield return Steps(8); abilities.SetLightHeld(false);
+            abilities.SetLightHeld(true); yield return Steps(16); abilities.SetLightHeld(false);
             Assert.That(boss.IsExposed,Is.True);
             abilities.TryAttack(); yield return Steps(24);
             if(i==9) { yield return null; Capture("11-llanthu-fase2"); }
@@ -81,7 +81,7 @@ public class NoctalGddSceneTests
         yield return Steps(50);
         motor.RespawnAt(new Vector2(90,-5)); yield return Steps(3); Assert.That(motor.GetComponent<TlamaniVitals>().IsDead,Is.True);
     }
-    private static void Capture(string name)
+    public static void Capture(string name)
     {
         if(SystemInfo.graphicsDeviceType==UnityEngine.Rendering.GraphicsDeviceType.Null) return;
         var camera=Camera.main; var previous=camera.targetTexture; var active=RenderTexture.active;
