@@ -37,6 +37,8 @@ namespace Noctal
         public int Facing { get; private set; } = 1;
         public Vector2 Velocity => body != null ? body.velocity : Vector2.zero;
         public float DashCooldownRemaining => cooldownRemaining;
+        public float MoveMultiplier { get; set; } = 1f;
+        public float JumpMultiplier { get; set; } = 1f;
         public bool CanDash => !IsDashing && cooldownRemaining <= 0f && !dashSpentInAir;
 
         private void Awake()
@@ -75,7 +77,7 @@ namespace Noctal
                 dashActive = false;
                 dashRemaining = 0f;
                 body.gravityScale = gravityScale;
-                body.velocity = new Vector2(horizontal * speed, body.velocity.y);
+                body.velocity = new Vector2(horizontal * speed * MoveMultiplier, body.velocity.y);
             }
             cooldownRemaining = Mathf.Max(0f, cooldownRemaining - dt);
             IsGrounded = CheckGround();
@@ -113,10 +115,10 @@ namespace Noctal
             {
                 body.gravityScale = gravityScale;
                 Vector2 velocity = body.velocity;
-                velocity.x = Mathf.MoveTowards(velocity.x, horizontal * speed, acceleration * dt);
+                velocity.x = Mathf.MoveTowards(velocity.x, horizontal * speed * MoveMultiplier, acceleration * dt);
                 if (jumpRemaining > 0f && coyoteRemaining > 0f)
                 {
-                    velocity.y = jumpSpeed;
+                    velocity.y = jumpSpeed * JumpMultiplier;
                     jumpRemaining = coyoteRemaining = 0f;
                     IsGrounded = false;
                 }
