@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="42" result="Passed" total="42" passed="42" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-01 01:51:28Z" end-time="2026-11-01 01:53:06Z" duration="98,0144657">
+  <test-suite type="TestSuite" id="1000" name="Noctal" fullname="Noctal" runstate="Runnable" testcasecount="42" result="Passed" start-time="2026-11-01 01:51:28Z" end-time="2026-11-01 01:53:06Z" duration="98.014466" total="42" passed="42" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1048" name="Noctal.Tlamani.PlayModeTests.dll" fullname="C:/Users/user/Documents/Codex/2026-10-31/mira/work/Noctal_Game/Library/ScriptAssemblies/Noctal.Tlamani.PlayModeTests.dll" runstate="Runnable" testcasecount="42" result="Passed" start-time="2026-11-01 01:51:28Z" end-time="2026-11-01 01:53:06Z" duration="98.007038" total="42" passed="42" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="22792" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <test-suite type="TestFixture" id="1001" name="NoctalBeamPresentationTests" fullname="NoctalBeamPresentationTests" classname="NoctalBeamPresentationTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-01 01:51:28Z" end-time="2026-11-01 01:51:38Z" duration="9.711877" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1005" name="AtaquePausaMuerteYReinicioLimpianLaCanalizacion" fullname="NoctalBeamPresentationTests.AtaquePausaMuerteYReinicioLimpianLaCanalizacion" methodname="AtaquePausaMuerteYReinicioLimpianLaCanalizacion" classname="NoctalBeamPresentationTests" runstate="Runnable" seed="1083654588" result="Passed" start-time="2026-11-01 01:51:28Z" end-time="2026-11-01 01:51:31Z" duration="2.759645" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1003" name="LuzAcompanaGiroCaminataSaltoYPuma" fullname="NoctalBeamPresentationTests.LuzAcompanaGiroCaminataSaltoYPuma" methodname="LuzAcompanaGiroCaminataSaltoYPuma" classname="NoctalBeamPresentationTests" runstate="Runnable" seed="118454107" result="Passed" start-time="2026-11-01 01:51:31Z" end-time="2026-11-01 01:51:33Z" duration="2.453342" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1002" name="PreparaEspadaAntesDeEmitirDesdeLaPunta" fullname="NoctalBeamPresentationTests.PreparaEspadaAntesDeEmitirDesdeLaPunta" methodname="PreparaEspadaAntesDeEmitirDesdeLaPunta" classname="NoctalBeamPresentationTests" runstate="Runnable" seed="341798834" result="Passed" start-time="2026-11-01 01:51:33Z" end-time="2026-11-01 01:51:35Z" duration="1.777629" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1004" name="PuntaContraParedNoIluminaAlOtroLado" fullname="NoctalBeamPresentationTests.PuntaContraParedNoIluminaAlOtroLado" methodname="PuntaContraParedNoIluminaAlOtroLado" classname="NoctalBeamPresentationTests" runstate="Runnable" seed="441232629" result="Passed" start-time="2026-11-01 01:51:35Z" end-time="2026-11-01 01:51:38Z" duration="2.706932" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1006" name="NoctalGddSceneTests" fullname="NoctalGddSceneTests" classname="NoctalGddSceneTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-01 01:51:38Z" end-time="2026-11-01 01:52:03Z" duration="25.131536" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1009" name="CombateRealContraLlanthuSellaTenebrisYPermiteReintentar" fullname="NoctalGddSceneTests.CombateRealContraLlanthuSellaTenebrisYPermiteReintentar" methodname="CombateRealContraLlanthuSellaTenebrisYPermiteReintentar" classname="NoctalGddSceneTests" runstate="Runnable" seed="646079248" result="Passed" start-time="2026-11-01 01:51:38Z" end-time="2026-11-01 01:51:56Z" duration="18.854909" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1007" name="EscenaIntegraAtaqueTerrestreYAereoConHUD" fullname="NoctalGddSceneTests.EscenaIntegraAtaqueTerrestreYAereoConHUD" methodname="EscenaIntegraAtaqueTerrestreYAereoConHUD" classname="NoctalGddSceneTests" runstate="Runnable" seed="1746692236" result="Passed" start-time="2026-11-01 01:51:56Z" end-time="2026-11-01 01:51:59Z" duration="2.454170" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1008" name="SantuarioDesbloqueaPumaDisipaSombrasYPuerta" fullname="NoctalGddSceneTests.SantuarioDesbloqueaPumaDisipaSombrasYPuerta" methodname="SantuarioDesbloqueaPumaDisipaSombrasYPuerta" classname="NoctalGddSceneTests" runstate="Runnable" seed="783810420" result="Passed" start-time="2026-11-01 01:51:59Z" end-time="2026-11-01 01:52:03Z" duration="3.820654" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1010" name="NoctalMechanicsTests" fullname="NoctalMechanicsTests" classname="NoctalMechanicsTests" runstate="Runnable" testcasecount="15" result="Passed" start-time="2026-11-01 01:52:03Z" end-time="2026-11-01 01:52:39Z" duration="35.820548" total="15" passed="15" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1021" name="ApasankaTelegrafiaYEmbiste" fullname="NoctalMechanicsTests.ApasankaTelegrafiaYEmbiste" methodname="ApasankaTelegrafiaYEmbiste" classname="NoctalMechanicsTests" runstate="Runnable" seed="548199121" result="Passed" start-time="2026-11-01 01:52:03Z" end-time="2026-11-01 01:52:04Z" duration="1.339291" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1012" name="AtaqueAereoAlcanzaEnemigoElevado" fullname="NoctalMechanicsTests.AtaqueAereoAlcanzaEnemigoElevado" methodname="AtaqueAereoAlcanzaEnemigoElevado" classname="NoctalMechanicsTests" runstate="Runnable" seed="502495735" result="Passed" start-time="2026-11-01 01:52:04Z" end-time="2026-11-01 01:52:05Z" duration="1.198961" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1011" name="AtaqueCortoGolpeaUnaVezAunqueHayaVariosColliders" fullname="NoctalMechanicsTests.AtaqueCortoGolpeaUnaVezAunqueHayaVariosColliders" methodname="AtaqueCortoGolpeaUnaVezAunqueHayaVariosColliders" classname="NoctalMechanicsTests" runstate="Runnable" seed="1593182885" result="Passed" start-time="2026-11-01 01:52:05Z" end-time="2026-11-01 01:52:07Z" duration="1.699692" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1013" name="AtaqueNoCruzaParedNiAlcanzaObjetivosLejanosODetras" fullname="NoctalMechanicsTests.AtaqueNoCruzaParedNiAlcanzaObjetivosLejanosODetras" methodname="AtaqueNoCruzaParedNiAlcanzaObjetivosLejanosODetras" classname="NoctalMechanicsTests" runstate="Runnable" seed="655568867" result="Passed" start-time="2026-11-01 01:52:07Z" end-time="2026-11-01 01:52:08Z" duration="1.200159" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1020" name="GuardiaExigeEspaldaOLuzYElCombateRecuperaEnergia" fullname="NoctalMechanicsTests.GuardiaExigeEspaldaOLuzYElCombateRecuperaEnergia" methodname="GuardiaExigeEspaldaOLuzYElCombateRecuperaEnergia" classname="NoctalMechanicsTests" runstate="Runnable" seed="1901255008" result="Passed" start-time="2026-11-01 01:52:08Z" end-time="2026-11-01 01:52:10Z" duration="1.599728" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1025" name="LlanthuDisparaOndasYCambiaDePosicionEnFaseDos" fullname="NoctalMechanicsTests.LlanthuDisparaOndasYCambiaDePosicionEnFaseDos" methodname="LlanthuDisparaOndasYCambiaDePosicionEnFaseDos" classname="NoctalMechanicsTests" runstate="Runnable" seed="1689205953" result="Passed" start-time="2026-11-01 01:52:10Z" end-time="2026-11-01 01:52:16Z" duration="6.620003" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1024" name="LlanthuExigeLuzYEntraEnSegundaFase" fullname="NoctalMechanicsTests.LlanthuExigeLuzYEntraEnSegundaFase" methodname="LlanthuExigeLuzYEntraEnSegundaFase" classname="NoctalMechanicsTests" runstate="Runnable" seed="1278046522" result="Passed" start-time="2026-11-01 01:52:16Z" end-time="2026-11-01 01:52:17Z" duration="0.801963" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1017" name="LuzConsumeEnergiaSeAgotaYRecargaConExploracion" fullname="NoctalMechanicsTests.LuzConsumeEnergiaSeAgotaYRecargaConExploracion" methodname="LuzConsumeEnergiaSeAgotaYRecargaConExploracion" classname="NoctalMechanicsTests" runstate="Runnable" seed="811987970" result="Passed" start-time="2026-11-01 01:52:17Z" end-time="2026-11-01 01:52:24Z" duration="6.798518" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1018" name="LuzDebilitaEnemigosPeroNoCruzaParedes" fullname="NoctalMechanicsTests.LuzDebilitaEnemigosPeroNoCruzaParedes" methodname="LuzDebilitaEnemigosPeroNoCruzaParedes" classname="NoctalMechanicsTests" runstate="Runnable" seed="634010326" result="Passed" start-time="2026-11-01 01:52:24Z" end-time="2026-11-01 01:52:28Z" duration="4.199319" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1019" name="LuzDisipaSombraYActivaMecanismo" fullname="NoctalMechanicsTests.LuzDisipaSombraYActivaMecanismo" methodname="LuzDisipaSombraYActivaMecanismo" classname="NoctalMechanicsTests" runstate="Runnable" seed="492961224" result="Passed" start-time="2026-11-01 01:52:28Z" end-time="2026-11-01 01:52:31Z" duration="2.399857" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1023" name="NawiPreparaRayoYCausaDano" fullname="NoctalMechanicsTests.NawiPreparaRayoYCausaDano" methodname="NawiPreparaRayoYCausaDano" classname="NoctalMechanicsTests" runstate="Runnable" seed="475919465" result="Passed" start-time="2026-11-01 01:52:31Z" end-time="2026-11-01 01:52:33Z" duration="1.899697" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1022" name="PilpintuHacePicadaYQuedaVulnerableAbajo" fullname="NoctalMechanicsTests.PilpintuHacePicadaYQuedaVulnerableAbajo" methodname="PilpintuHacePicadaYQuedaVulnerableAbajo" classname="NoctalMechanicsTests" runstate="Runnable" seed="1572902779" result="Passed" start-time="2026-11-01 01:52:33Z" end-time="2026-11-01 01:52:35Z" duration="2.100382" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1016" name="PumaNoPuedeVolverseHumanoDentroDeUnPasoBajo" fullname="NoctalMechanicsTests.PumaNoPuedeVolverseHumanoDentroDeUnPasoBajo" methodname="PumaNoPuedeVolverseHumanoDentroDeUnPasoBajo" classname="NoctalMechanicsTests" runstate="Runnable" seed="1606487635" result="Passed" start-time="2026-11-01 01:52:35Z" end-time="2026-11-01 01:52:36Z" duration="0.940715" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1015" name="PumaSeDesbloqueaYCambiaMovilidadSinHundirLosPies" fullname="NoctalMechanicsTests.PumaSeDesbloqueaYCambiaMovilidadSinHundirLosPies" methodname="PumaSeDesbloqueaYCambiaMovilidadSinHundirLosPies" classname="NoctalMechanicsTests" runstate="Runnable" seed="531270408" result="Passed" start-time="2026-11-01 01:52:36Z" end-time="2026-11-01 01:52:37Z" duration="1.198552" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1014" name="VidaTieneInvulnerabilidadMuerteYReinicio" fullname="NoctalMechanicsTests.VidaTieneInvulnerabilidadMuerteYReinicio" methodname="VidaTieneInvulnerabilidadMuerteYReinicio" classname="NoctalMechanicsTests" runstate="Runnable" seed="157045057" result="Passed" start-time="2026-11-01 01:52:37Z" end-time="2026-11-01 01:52:39Z" duration="1.820493" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1026" name="TlamaniMovementTests" fullname="TlamaniMovementTests" classname="TlamaniMovementTests" runstate="Runnable" testcasecount="17" result="Passed" start-time="2026-11-01 01:52:39Z" end-time="2026-11-01 01:53:02Z" duration="22.939559" total="17" passed="17" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1039" name="AterrizaSobrePlataformaDelgadaDesdeArriba" fullname="TlamaniMovementTests.AterrizaSobrePlataformaDelgadaDesdeArriba" methodname="AterrizaSobrePlataformaDelgadaDesdeArriba" classname="TlamaniMovementTests" runstate="Runnable" seed="1277260794" result="Passed" start-time="2026-11-01 01:52:39Z" end-time="2026-11-01 01:52:40Z" duration="1.497836" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1027" name="CaminaEnAmbasDireccionesYFrena" fullname="TlamaniMovementTests.CaminaEnAmbasDireccionesYFrena" methodname="CaminaEnAmbasDireccionesYFrena" classname="TlamaniMovementTests" runstate="Runnable" seed="421570155" result="Passed" start-time="2026-11-01 01:52:40Z" end-time="2026-11-01 01:52:42Z" duration="2.198880" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1035" name="DashAereoRecuperaGravedadAlTerminar" fullname="TlamaniMovementTests.DashAereoRecuperaGravedadAlTerminar" methodname="DashAereoRecuperaGravedadAlTerminar" classname="TlamaniMovementTests" runstate="Runnable" seed="2004112424" result="Passed" start-time="2026-11-01 01:52:42Z" end-time="2026-11-01 01:52:43Z" duration="0.980907" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1033" name="DashConEntradaRecuperaVelocidadNormal" fullname="TlamaniMovementTests.DashConEntradaRecuperaVelocidadNormal" methodname="DashConEntradaRecuperaVelocidadNormal" classname="TlamaniMovementTests" runstate="Runnable" seed="2145323477" result="Passed" start-time="2026-11-01 01:52:43Z" end-time="2026-11-01 01:52:44Z" duration="0.979162" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1037" name="DashDerechoSeDetieneAnteParedDelgada" fullname="TlamaniMovementTests.DashDerechoSeDetieneAnteParedDelgada" methodname="DashDerechoSeDetieneAnteParedDelgada" classname="TlamaniMovementTests" runstate="Runnable" seed="807101589" result="Passed" start-time="2026-11-01 01:52:44Z" end-time="2026-11-01 01:52:45Z" duration="1.080560" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1036" name="DashIzquierdoSeDetieneAnteParedDelgada" fullname="TlamaniMovementTests.DashIzquierdoSeDetieneAnteParedDelgada" methodname="DashIzquierdoSeDetieneAnteParedDelgada" classname="TlamaniMovementTests" runstate="Runnable" seed="1282141702" result="Passed" start-time="2026-11-01 01:52:45Z" end-time="2026-11-01 01:52:46Z" duration="1.078953" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1034" name="DashPermiteCambiarDireccionAlTerminar" fullname="TlamaniMovementTests.DashPermiteCambiarDireccionAlTerminar" methodname="DashPermiteCambiarDireccionAlTerminar" classname="TlamaniMovementTests" runstate="Runnable" seed="1801161417" result="Passed" start-time="2026-11-01 01:52:46Z" end-time="2026-11-01 01:52:47Z" duration="0.980108" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1031" name="DashRecorreDistanciaYRespetaRecarga" fullname="TlamaniMovementTests.DashRecorreDistanciaYRespetaRecarga" methodname="DashRecorreDistanciaYRespetaRecarga" classname="TlamaniMovementTests" runstate="Runnable" seed="812924036" result="Passed" start-time="2026-11-01 01:52:47Z" end-time="2026-11-01 01:52:49Z" duration="1.580376" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1032" name="DashSinEntradaTerminaSinDeslizamiento" fullname="TlamaniMovementTests.DashSinEntradaTerminaSinDeslizamiento" methodname="DashSinEntradaTerminaSinDeslizamiento" classname="TlamaniMovementTests" runstate="Runnable" seed="143749449" result="Passed" start-time="2026-11-01 01:52:49Z" end-time="2026-11-01 01:52:50Z" duration="1.139147" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1038" name="NoAtravesarTechoNiContarloComoSuelo" fullname="TlamaniMovementTests.NoAtravesarTechoNiContarloComoSuelo" methodname="NoAtravesarTechoNiContarloComoSuelo" classname="TlamaniMovementTests" runstate="Runnable" seed="1491184441" result="Passed" start-time="2026-11-01 01:52:50Z" end-time="2026-11-01 01:52:51Z" duration="1.040063" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1029" name="NoPermiteDobleSaltoEnElAire" fullname="TlamaniMovementTests.NoPermiteDobleSaltoEnElAire" methodname="NoPermiteDobleSaltoEnElAire" classname="TlamaniMovementTests" runstate="Runnable" seed="1036386607" result="Passed" start-time="2026-11-01 01:52:51Z" end-time="2026-11-01 01:52:52Z" duration="1.040075" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1042" name="PermiteSaltarJustoDespuesDeSalirDelBorde" fullname="TlamaniMovementTests.PermiteSaltarJustoDespuesDeSalirDelBorde" methodname="PermiteSaltarJustoDespuesDeSalirDelBorde" classname="TlamaniMovementTests" runstate="Runnable" seed="1444394711" result="Passed" start-time="2026-11-01 01:52:52Z" end-time="2026-11-01 01:52:53Z" duration="1.099634" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1041" name="ReiniciarDuranteDashLimpiaVelocidadYGravedad" fullname="TlamaniMovementTests.ReiniciarDuranteDashLimpiaVelocidadYGravedad" methodname="ReiniciarDuranteDashLimpiaVelocidadYGravedad" classname="TlamaniMovementTests" runstate="Runnable" seed="1990743348" result="Passed" start-time="2026-11-01 01:52:53Z" end-time="2026-11-01 01:52:55Z" duration="1.639882" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1028" name="SaltaYRegresaSinAtravesarElSuelo" fullname="TlamaniMovementTests.SaltaYRegresaSinAtravesarElSuelo" methodname="SaltaYRegresaSinAtravesarElSuelo" classname="TlamaniMovementTests" runstate="Runnable" seed="1514198997" result="Passed" start-time="2026-11-01 01:52:55Z" end-time="2026-11-01 01:52:57Z" duration="2.119938" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1043" name="SaltoAnticipadoSeEjecutaAlAterrizar" fullname="TlamaniMovementTests.SaltoAnticipadoSeEjecutaAlAterrizar" methodname="SaltoAnticipadoSeEjecutaAlAterrizar" classname="TlamaniMovementTests" runstate="Runnable" seed="1394683897" result="Passed" start-time="2026-11-01 01:52:57Z" end-time="2026-11-01 01:52:58Z" duration="1.179903" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1030" name="SoltarEspacioRecortaElSalto" fullname="TlamaniMovementTests.SoltarEspacioRecortaElSalto" methodname="SoltarEspacioRecortaElSalto" classname="TlamaniMovementTests" runstate="Runnable" seed="456656210" result="Passed" start-time="2026-11-01 01:52:58Z" end-time="2026-11-01 01:52:59Z" duration="0.939913" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1040" name="UnaCargaDeDashAereoHastaAterrizar" fullname="TlamaniMovementTests.UnaCargaDeDashAereoHastaAterrizar" methodname="UnaCargaDeDashAereoHastaAterrizar" classname="TlamaniMovementTests" runstate="Runnable" seed="1595226019" result="Passed" start-time="2026-11-01 01:52:59Z" end-time="2026-11-01 01:53:02Z" duration="2.360271" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1044" name="TlamaniSceneTests" fullname="TlamaniSceneTests" classname="TlamaniSceneTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-01 01:53:02Z" end-time="2026-11-01 01:53:06Z" duration="4.401083" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1046" name="EntradaPasilloPermiteCaminarSaltarYDash" fullname="TlamaniSceneTests.EntradaPasilloPermiteCaminarSaltarYDash" methodname="EntradaPasilloPermiteCaminarSaltarYDash" classname="TlamaniSceneTests" runstate="Runnable" seed="1133295233" result="Passed" start-time="2026-11-01 01:53:02Z" end-time="2026-11-01 01:53:05Z" duration="3.166471" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1047" name="IntroTienePersonajeYSueloConfigurados" fullname="TlamaniSceneTests.IntroTienePersonajeYSueloConfigurados" methodname="IntroTienePersonajeYSueloConfigurados" classname="TlamaniSceneTests" runstate="Runnable" seed="99304372" result="Passed" start-time="2026-11-01 01:53:05Z" end-time="2026-11-01 01:53:06Z" duration="1.209515" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1045" name="PiesDeAnimacionesQuedanSobreLaBaseDelCollider" fullname="TlamaniSceneTests.PiesDeAnimacionesQuedanSobreLaBaseDelCollider" methodname="PiesDeAnimacionesQuedanSobreLaBaseDelCollider" classname="TlamaniSceneTests" runstate="Runnable" seed="1821527999" result="Passed" start-time="2026-11-01 01:53:06Z" end-time="2026-11-01 01:53:06Z" duration="0.023514" asserts="0">
+          <properties />
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

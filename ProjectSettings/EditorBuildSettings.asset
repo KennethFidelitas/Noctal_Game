@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Mecanicas_Noctal.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 1
     path: Assets/Scenes/Entrada_Pasillo.unity
     guid: 2d2a3d5daf9b6cb4294fcebb754b9fdf
   - enabled: 1
