@@ -1,0 +1,5 @@
+{
+  "name": "Noctal.Tlamani.PlayModeTests",
+  "references": ["Noctal.Tlamani"],
+  "optionalUnityReferences": ["TestAssemblies"]
+}

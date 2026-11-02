@@ -13,10 +13,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - NoctalWorld
+  - NoctalEnemy
+  - NoctalPlayer
+  - NoctalInteractable
   - 
   - 
   - 
