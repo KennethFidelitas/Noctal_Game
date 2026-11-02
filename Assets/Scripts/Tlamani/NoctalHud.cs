@@ -7,11 +7,16 @@ namespace Noctal
         public TlamaniVitals player;
         public NoctalLevel level;
         public Text health, energy, room, hint, boss, overlay;
+        public Image healthBarFill;
         private void Update()
         {
             if (player == null || level == null) return;
             var abilities = player.GetComponent<TlamaniAbilities>();
             health.text = "VIDA  " + player.Health + " / " + player.MaximumHealth;
+            if (healthBarFill != null && player.MaximumHealth > 0) {
+                healthBarFill.fillAmount =
+                Mathf.Clamp01((float)player.Health / player.MaximumHealth);
+            }
             energy.text = "LUZ  " + Mathf.CeilToInt(abilities.Energy) + " / " + abilities.MaximumEnergy +
                 "\n" + (abilities.IsPuma ? "ÁNIMA · PUMA" : abilities.PumaUnlocked ? "Q · TRANSFORMAR" : "ÁNIMA POR DESCUBRIR");
             room.text = level.roomNames[level.Room];
