@@ -1,4 +1,3 @@
-
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -35,6 +34,9 @@ namespace Noctal
         private IEnumerator ShowGameOver()
         {
             yield return new WaitForSecondsRealtime(delayBeforeGameOver);
+
+            if (NoctalLevel.Instance != null)
+                NoctalLevel.SavedCheckpointRoom = NoctalLevel.Instance.Room;
 
             Time.timeScale = 1f;
             SceneManager.LoadScene("GameOver");

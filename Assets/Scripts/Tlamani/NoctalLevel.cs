@@ -18,13 +18,21 @@ namespace Noctal
         private NoctalPickup[] pickups;
         private NoctalLightTarget[] lightTargets;
         private int checkpointRoom;
+        public static int SavedCheckpointRoom = 0;
         public int Room { get; private set; }
         public bool BossDefeated { get; private set; }
         public bool Won { get; private set; }
         public bool Paused { get; private set; }
         private void Awake()
         {
-            Instance = this; Time.timeScale = 1;
+            Instance = this;
+            Time.timeScale = 1;
+
+            checkpointRoom = Mathf.Clamp(SavedCheckpointRoom, 0, roomStarts.Length - 1);
+            if (player != null && checkpointRoom > 0)
+            {
+                player.RespawnAt(new Vector2(roomStarts[checkpointRoom] + 1.5f, 1));
+            }
             Physics2D.IgnoreLayerCollision(NoctalLayers.Enemy,NoctalLayers.Player,true);
             Physics2D.IgnoreLayerCollision(NoctalLayers.Enemy,NoctalLayers.Enemy,true);
             enemies = FindObjectsOfType<NoctalEnemy>(true); pickups = FindObjectsOfType<NoctalPickup>(true);
@@ -35,6 +43,7 @@ namespace Noctal
             if (player == null) return;
             Room = 0; for (int i = 1; i < roomStarts.Length; i++) if (player.transform.position.x >= roomStarts[i]) Room = i;
             checkpointRoom = Mathf.Max(checkpointRoom, Room);
+            SavedCheckpointRoom = checkpointRoom;
             if (player.transform.position.y < -4 && !player.GetComponent<TlamaniVitals>().IsDead)
             {
                 player.GetComponent<TlamaniVitals>().TakeDamage(99);

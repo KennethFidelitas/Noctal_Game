@@ -6,6 +6,7 @@ public class Menucontroller : MonoBehaviour
 {
     public void NuevaPartida()
     {
+        Noctal.NoctalLevel.SavedCheckpointRoom = 0;
         SceneManager.LoadScene("Mecanicas_Noctal");
     }
 
@@ -17,11 +18,21 @@ public class Menucontroller : MonoBehaviour
 
     public void Reintentar()
     {
-        SceneManager.LoadScene("Mecanicas_Noctal");
+        Noctal.NoctalLevel level = Noctal.NoctalLevel.Instance;
+
+        if (level != null)
+        {
+            level.Retry();
+        }
+        else
+        {
+            SceneManager.LoadScene("Mecanicas_Noctal");
+        }
     }
 
     public void VolverAlMenu()
     {
+        Noctal.NoctalLevel.SavedCheckpointRoom = 0;
         SceneManager.LoadScene("MainMenu");
     }
 }
