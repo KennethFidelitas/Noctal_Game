@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +6,7 @@ public class Menucontroller : MonoBehaviour
 {
     public void NuevaPartida()
     {
-        SceneManager.LoadScene("Intro");
+        SceneManager.LoadScene("Mecanicas_Noctal");
     }
 
     public void Salir()
@@ -18,7 +17,7 @@ public class Menucontroller : MonoBehaviour
 
     public void Reintentar()
     {
-        SceneManager.LoadScene("Intro");
+        SceneManager.LoadScene("Mecanicas_Noctal");
     }
 
     public void VolverAlMenu()

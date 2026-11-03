@@ -12,8 +12,11 @@ namespace Noctal
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
+                if (vitals != null && vitals.IsDead) return;
+
                 if (NoctalLevel.Instance != null) NoctalLevel.Instance.Retry();
                 else { vitals?.Restore(); abilities?.ResetForRetry(); motor.Respawn(); }
+
                 return;
             }
             if (NoctalLevel.Instance != null)
